@@ -1,9 +1,6 @@
-Changelog
-=========
+Changes
+=======
 
-Here you can see the full list of changes between each Flask-AppFactory
-release.
+Version 0.1.0 (released 2015-07-31)
 
-Version 0.1
------------
-- Initial public release
+- Initial public release.

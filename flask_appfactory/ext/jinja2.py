@@ -7,13 +7,25 @@
 # modify it under the terms of the Revised BSD License; see LICENSE
 # file for more details.
 
-"""Jinja2 loader and extensions initialization."""
+"""Order-aware Jinja2 loader and extensions initialization.
 
-from __future__ import absolute_import, unicode_literals, print_function
+The default Flask Jinja2 loader is not aware of the order defined in
+``PACKAGES``. This means that if two modules provides the same template, it is
+undefined which template is being rendered. This extension adds a
+``PACKAGES`` order-aware Jinja2 loader, which will search for a given template
+in each module in the order defined by ``PACKAGES``. This allows modules to
+override templates defined in modules later in ``PACKAGES``.
+
+
+Additionally the extension will load any Jinja2 extension defined in the
+``JINJA2_EXTENSIONS`` configuration variable.
+"""
+
+from __future__ import absolute_import, print_function, unicode_literals
 
 from distutils.version import LooseVersion
-from flask.templating import DispatchingJinjaLoader
 from flask import __version__ as flask_version
+from flask.templating import DispatchingJinjaLoader
 from jinja2 import ChoiceLoader
 
 # Flask 1.0 changes return value of _iter_loaders so for compatibility with
@@ -36,7 +48,7 @@ class OrderAwareDispatchingJinjaLoader(DispatchingJinjaLoader):
 
     Customization of default Flask Jinja2 template loader. By default the
     Flask Jinja2 template loader is not aware of the order of Blueprints as
-    defined by the PACKAGES configuration variable.
+    defined by the ``PACKAGES`` configuration variable.
     """
 
     def _iter_loaders(self, template):
@@ -54,7 +66,6 @@ class OrderAwareDispatchingJinjaLoader(DispatchingJinjaLoader):
 def setup_app(app):
     """Initialize Jinja2 loader and extensions."""
     # Customize Jinja loader.
-
     jinja_loader = ChoiceLoader([
         OrderAwareDispatchingJinjaLoader(app),
         app.jinja_loader,

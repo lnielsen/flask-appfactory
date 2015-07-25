@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-#
 # This file is part of Flask-AppFactory
 # Copyright (C) 2015 CERN.
 #
@@ -7,29 +5,49 @@
 # modify it under the terms of the Revised BSD License; see LICENSE
 # file for more details.
 
-
-# Travis CI file, that integrates with coveralls for reporting test coverage.
+sudo: false
 
 language: python
 
 python:
-  - "2.6"
   - "2.7"
   - "3.3"
   - "3.4"
 
+env:
+  - REQUIREMENTS=devel
+  - REQUIREMENTS=latest
+  - REQUIREMENTS=lowest
+
+cache:
+  - pip
+
 install:
-  - pip install --upgrade pip  --use-mirrors
-  - pip install pep257 coveralls --use-mirrors
-  - pip install .[docs]
+  # Install test dependencies
+  - "travis_retry pip install coveralls pep257 Sphinx"
+  - "travis_retry pip install pytest pytest-pep8 pytest-cov pytest-cache"
+  - "travis_retry pip install -r requirements.${REQUIREMENTS}.txt"
+  - "travis_retry pip install -e ."
 
 script:
   - pep257 flask_appfactory
   - "sphinx-build -qnNW docs docs/_build/html"
-  - coverage run --source=flask_appfactory setup.py test
+  - python setup.py test
+  - "sphinx-build -qnNW -b doctest docs docs/_build/doctest"
 
 after_success:
   - coveralls
 
 notifications:
   email: false
+
+deploy:
+  provider: pypi
+  user: lnielsen
+  password:
+    secure: cKcrzBcAPn5pQqhJAX+ct5L7dNDL3Y4NKt+KksWfag5YN2SCTkAEcm0JvKxP4pURG0AOXqqWjY1ydvj7XkafEOWq4lKjtJy/Eb1ZY8dO5RJOQ1fjICvtVxcW/6qQKz5TESd6CafXis0E3kmqrRAHWnFZATEhA0KnnvoCoGByZUOn9gg527dA8tv4MatY9xYQGOuryKWq/KKgD92Z9EhwwzB+26naXlpI6GQiMoxJA5br4Idc9Y5uHbJVGSxTWkQYbXo8GmYatwGmswPfJXZqJt37K8yLdYTCZku7FQ/mBNrj1OQutQh40MX72Zd3o5GEHswFLKvRcPjX4jA6kjBcGKC/Lxn2oDCKA8HhLpCUwQlhuZpXvp2Ghq8df7ZIZvsuO/KOVAske7e0L0uGcs244jY00uTFtK9X/Xtj72tBD4On/GeWXOgRW6tlwo6NsJOdR1HjiR6F3xX62IUJBXGE5obmbNTF+XciWTiY1aTKlSSRbu+M0q6jD+1DFl0ttuvdh9zMctdDkCJMqncEU5z9sDX6U08iahdHF70eCL6dRvl5aD6flbVMVOXt7z3WZPqWzLDIOCuy1JjgMyO2l++AB4lhSCdxEaOjGlLIyIBLfLnsDMtqrKavNszq4h01qlh3tiQNW9KXxXuxCTx4lr5YdQ/y6P5mhSoQBNfpZpVuRr4=
+  distributions: "sdist bdist_wheel"
+  on:
+    tags: true
+    python: "2.7"
+    condition: $REQUIREMENTS = latest

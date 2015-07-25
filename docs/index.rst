@@ -1,10 +1,22 @@
-**Flask-AppFactory** is an extension for Flask that CHANGEME.
+==================
+ Flask-AppFactory
+==================
+.. currentmodule:: flask_appfactory
 
-.. image:: https://travis-ci.org/inveniosoftware/flask-appfactory.png?branch=master
-    :target: https://travis-ci.org/inveniosoftware/flask-appfactory
-.. image:: https://coveralls.io/repos/inveniosoftware/flask-appfactory/badge.png?branch=master
-    :target: https://coveralls.io/r/inveniosoftware/flask-appfactory
+.. raw:: html
 
+    <p style="height:22px; margin:0 0 0 2em; float:right">
+        <a href="https://travis-ci.org/inveniosoftware/flask-appfactory">
+            <img src="https://travis-ci.org/inveniosoftware/flask-appfactory.svg?branch=master"
+                 alt="travis-ci badge"/>
+        </a>
+        <a href="https://coveralls.io/r/inveniosoftware/flask-appfactory">
+            <img src="https://coveralls.io/repos/inveniosoftware/flask-appfactory/badge.svg?branch=master"
+                 alt="coveralls.io badge"/>
+        </a>
+    </p>
+
+.. automodule:: flask_appfactory
 
 User's Guide
 ============
@@ -16,12 +28,10 @@ Flask-AppFactory with Flask.
    :maxdepth: 2
 
    installation
-   quickstart
-   userguide
 
 
 API Reference
-============
+=============
 
 If you are looking for information on a specific function, class or
 method, this part of the documentation is for you.
@@ -35,11 +45,9 @@ method, this part of the documentation is for you.
 Additional Notes
 ================
 
-Notes on how to contribute, legal information and changelog are here for the interested.
+Notes on how to contribute, legal information and changes are here for the interested.
 
 .. toctree::
    :maxdepth: 2
 
    contributing
-   changelog
-   license

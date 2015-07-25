@@ -1,6 +1,6 @@
-==============
-Flask-AppFactory
-==============
+==================
+ Flask-AppFactory
+==================
 
 .. image:: https://travis-ci.org/inveniosoftware/flask-appfactory.png?branch=master
     :target: https://travis-ci.org/inveniosoftware/flask-appfactory
@@ -11,6 +11,12 @@ Flask-AppFactory
 .. image:: https://pypip.in/d/flask-appfactory/badge.png
    :target: https://crate.io/packages/flask-appfactory/
 
+Flask-AppFactory is an dynamic application loader.
+
+It allows you to build reusable modules that can be easily be assembled into
+full Flask applications using this loader. Each reusable module can provide
+default configuration, blueprints and command line interface.
+
 Installation
 ============
 Flask-AppFactory is on PyPI so all you need is: ::
@@ -18,7 +24,7 @@ Flask-AppFactory is on PyPI so all you need is: ::
     pip install Flask-AppFactory
 
 Documentation
-============
+=============
 Documentation is available at <http://flask-appfactory.readthedocs.org> or can be build using Sphinx: ::
 
     pip install Sphinx
@@ -32,20 +38,4 @@ Running the tests are as simple as: ::
 
 or (to also show test coverage) ::
 
-    source run-tests.sh
-
-License
-=======
-Copyright (C) 2014 CERN.
-
-Flask-AppFactory is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
-
-Flask-AppFactory is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with Flask-AppFactory; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307, USA.
-
-In applying this licence, CERN does not waive the privileges and immunities granted to it by virtue of its status as an Intergovernmental Organization or submit itself to any jurisdiction.
-
-.. image:: https://d2weczhvl823v0.cloudfront.net/inveniosoftware/flask-appfactory/trend.png
-   :alt: Bitdeli badge
-   :target: https://bitdeli.com/free
+    ./run-tests.sh

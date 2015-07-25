@@ -5,5 +5,7 @@
 # modify it under the terms of the Revised BSD License; see LICENSE
 # file for more details.
 
-coverage run setup.py test
-coverage report -m
+pep257 flask_appfactory && \
+sphinx-build -qnNW docs docs/_build/html && \
+python setup.py test && \
+sphinx-build -qnNW -b doctest docs docs/_build/doctest

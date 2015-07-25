@@ -13,13 +13,14 @@ The development version can be downloaded from `its page at GitHub
     git clone https://github.com/inveniosoftware/flask-appfactory.git
     cd flask-appfactory
     python setup.py develop
-    source run-tests.sh
+    ./run-tests.sh
 
 Requirements
 ------------
 Flask-AppFactory has the following dependencies:
 
 * `Flask <https://pypi.python.org/pypi/Flask>`_
-* `six <https://pypi.python.org/pypi/six>`_
+* `Flask-Registry <https://pypi.python.org/pypi/Flask-Registry>`_
+* `Flask-CLI <https://pypi.python.org/pypi/Flask-CLI>`_
 
-Flask-AppFactory requires Python version 2.6, 2.7 or 3.3+
+Flask-AppFactory requires Python version 2.7 or 3.3+

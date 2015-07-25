@@ -1,4 +1,10 @@
-Contributing
-============
+.. include:: ../CHANGES
 
-See <http://invenio-software.org/wiki/Development/Contributing> for now.
+.. include:: ../CONTRIBUTING.rst
+
+License
+=======
+
+.. include:: ../LICENSE
+
+.. include:: ../AUTHORS
